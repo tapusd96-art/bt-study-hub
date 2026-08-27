@@ -1,0 +1,741 @@
+<!DOCTYPE html><html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>BT Study Hub</title><style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f4f7fb;
+    color:#1f2937;
+    transition:.3s;
+}
+
+/* NAVBAR */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:13px 6%;
+    box-shadow:0 3px 15px rgba(0,0,0,.12);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:24px;
+    font-weight:bold;
+    color:#2563eb;
+}
+
+.logo img{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.logo span{
+    color:#7c3aed;
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#333;
+    font-weight:bold;
+}
+
+.nav-links a:hover{
+    color:#2563eb;
+}
+
+.nav-buttons{
+    display:flex;
+    gap:8px;
+}
+
+.dark-btn,
+.login-btn{
+    border:0;
+    padding:10px 15px;
+    border-radius:22px;
+    cursor:pointer;
+}
+
+.dark-btn{
+    background:#111827;
+    color:white;
+}
+
+.login-btn{
+    background:#2563eb;
+    color:white;
+}
+
+/* HERO */
+
+.hero{
+    min-height:570px;
+    padding:60px 7%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+}
+
+.hero-content{
+    max-width:600px;
+}
+
+.hero h1{
+    font-size:50px;
+    line-height:1.15;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#facc15;
+}
+
+.hero p{
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    border:0;
+    padding:14px 25px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.primary{
+    background:white;
+    color:#2563eb;
+}
+
+.secondary{
+    color:white;
+    border:2px solid white;
+}
+
+.hero-image{
+    width:45%;
+    max-width:520px;
+}
+
+.hero-image img{
+    width:100%;
+    border-radius:25px;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+/* SEARCH */
+
+.search-section{
+    padding:35px 20px;
+    text-align:center;
+}
+
+.search-box{
+    max-width:650px;
+    margin:auto;
+    display:flex;
+    background:white;
+    border-radius:30px;
+    padding:5px;
+    box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.search-box input{
+    flex:1;
+    border:0;
+    outline:0;
+    padding:14px 20px;
+    font-size:16px;
+}
+
+.search-box button{
+    border:0;
+    background:#2563eb;
+    color:white;
+    padding:0 25px;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+/* COMMON SECTION */
+
+.section{
+    max-width:1150px;
+    margin:auto;
+    padding:65px 20px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-title h2{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#6b7280;
+}
+
+/* CLASS */
+
+.class-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:22px;
+}
+
+.class-card{
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+    cursor:pointer;
+    transition:.3s;
+}
+
+.class-card:hover{
+    transform:translateY(-8px);
+}
+
+.class-card img{
+    width:100%;
+    height:130px;
+    object-fit:cover;
+}
+
+.class-info{
+    padding:18px;
+    text-align:center;
+}
+
+.class-info h3{
+    color:#2563eb;
+    margin-bottom:8px;
+}
+
+.class-info p{
+    color:#777;
+}
+
+/* SUBJECT */
+
+.subject-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:25px;
+}
+
+.subject-card{
+    background:white;
+    overflow:hidden;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.subject-card:hover{
+    transform:translateY(-8px);
+}
+
+.subject-card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+
+.subject-content{
+    padding:22px;
+}
+
+.subject-content h3{
+    color:#2563eb;
+    margin-bottom:10px;
+}
+
+.subject-content p{
+    color:#6b7280;
+    line-height:1.6;
+    margin-bottom:18px;
+}
+
+.small-btn{
+    border:0;
+    background:#2563eb;
+    color:white;
+    padding:10px 20px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+/* FEATURES */
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:22px;
+}
+
+.feature{
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 5px 18px rgba(0,0,0,.07);
+    text-align:center;
+}
+
+.feature-icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.feature h3{
+    margin-bottom:10px;
+}
+
+.feature p{
+    color:#6b7280;
+    line-height:1.6;
+}
+
+/* QUIZ */
+
+.quiz{
+    padding:70px 20px;
+    text-align:center;
+    color:white;
+    background:
+    linear-gradient(rgba(17,24,39,.9),rgba(17,24,39,.9)),
+    url("https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1400&q=80");
+    background-size:cover;
+    background-position:center;
+}
+
+.quiz h2{
+    font-size:36px;
+    margin-bottom:15px;
+}
+
+.quiz p{
+    margin-bottom:25px;
+    font-size:18px;
+}
+
+/* ABOUT */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+.about img{
+    width:100%;
+    border-radius:22px;
+}
+
+.about-text h2{
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.about-text p{
+    color:#6b7280;
+    line-height:1.8;
+}
+
+/* FOOTER */
+
+footer{
+    background:#111827;
+    color:white;
+    padding:50px 20px 20px;
+}
+
+.footer-grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+}
+
+.footer-box h3{
+    margin-bottom:15px;
+}
+
+.footer-box p{
+    color:#d1d5db;
+    line-height:1.8;
+}
+
+.copyright{
+    text-align:center;
+    border-top:1px solid #374151;
+    margin-top:35px;
+    padding-top:20px;
+    color:#9ca3af;
+}
+
+/* DARK MODE */
+
+.dark{
+    background:#0f172a;
+    color:#f8fafc;
+}
+
+.dark .navbar,
+.dark .search-box,
+.dark .class-card,
+.dark .subject-card,
+.dark .feature{
+    background:#1e293b;
+    color:white;
+}
+
+.dark .nav-links a{
+    color:white;
+}
+
+.dark .section-title p,
+.dark .subject-content p,
+.dark .feature p,
+.dark .about-text p{
+    color:#cbd5e1;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .navbar{
+        flex-wrap:wrap;
+    }
+
+    .nav-links{
+        order:3;
+        width:100%;
+        justify-content:center;
+        gap:15px;
+        margin-top:10px;
+    }
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero-image{
+        width:100%;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:500px){
+
+    .nav-links a{
+        font-size:13px;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .search-box button{
+        padding:0 15px;
+    }
+}
+
+</style></head><body><!-- NAVBAR --><nav class="navbar"><div class="logo"><img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=200&q=80">BT <span>Study Hub</span>
+
+</div><ul class="nav-links">
+<li><a href="#home">Home</a></li>
+<li><a href="#classes">Classes</a></li>
+<li><a href="#subjects">Subjects</a></li>
+<li><a href="#quiz">Quiz</a></li>
+</ul><div class="nav-buttons">
+<button class="dark-btn" onclick="darkMode()">🌙</button>
+<button class="login-btn" onclick="login()">Login</button>
+</div></nav><!-- HERO --><section class="hero" id="home"><div class="hero-content"><h1>
+Learn Today,
+<span>Lead Tomorrow</span>
+</h1><p>
+BT Study Hub হলো শিক্ষার্থীদের জন্য একটি
+আধুনিক অনলাইন শিক্ষা প্ল্যাটফর্ম।
+এখানে ক্লাস, নোট, কুইজ ও শিক্ষামূলক
+কনটেন্ট এক জায়গায় পাওয়া যাবে।
+</p><div class="hero-buttons"><a href="#classes" class="btn primary">
+🚀 Start Learning
+</a><a href="#subjects" class="btn secondary">
+📚 Explore Subjects
+</a></div></div><div class="hero-image"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=80"></div></section><!-- SEARCH --><section class="search-section"><div class="search-box"><input
+type="text"
+id="search"
+placeholder="🔍 Search your lesson..."
+
+«»
+
+<button onclick="searchLesson()">
+Search
+</button></div></section><!-- CLASSES --><section class="section" id="classes"><div class="section-title"><h2>🎓 Choose Your Class</h2><p>তোর ক্লাস নির্বাচন করে পড়াশোনা শুরু কর</p></div><div class="class-grid"><div class="class-card" onclick="selectClass(1)"><img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=600&q=80"><div class="class-info">
+<h3>Class 1</h3>
+<p>প্রাথমিক শিক্ষা</p>
+</div></div><div class="class-card" onclick="selectClass(2)"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=600&q=80"><div class="class-info">
+<h3>Class 2</h3>
+<p>প্রাথমিক শিক্ষা</p>
+</div></div><div class="class-card" onclick="selectClass(3)"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80"><div class="class-info">
+<h3>Class 3</h3>
+<p>প্রাথমিক শিক্ষা</p>
+</div></div><div class="class-card" onclick="selectClass(4)"><img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=600&q=80"><div class="class-info">
+<h3>Class 4</h3>
+<p>প্রাথমিক শিক্ষা</p>
+</div></div><div class="class-card" onclick="selectClass(5)"><img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80"><div class="class-info">
+<h3>Class 5</h3>
+<p>প্রাথমিক শিক্ষা</p>
+</div></div><div class="class-card" onclick="selectClass(6)"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=80"><div class="class-info">
+<h3>Class 6</h3>
+<p>মাধ্যমিক শিক্ষা</p>
+</div></div><div class="class-card" onclick="selectClass(7)"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"><div class="class-info">
+<h3>Class 7</h3>
+<p>মাধ্যমিক শিক্ষা</p>
+</div></div><div class="class-card" onclick="selectClass(8)"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80"><div class="class-info">
+<h3>Class 8</h3>
+<p>মাধ্যমিক শিক্ষা</p>
+</div></div><div class="class-card" onclick="selectClass(9)"><img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80"><div class="class-info">
+<h3>Class 9</h3>
+<p>মাধ্যমিক শিক্ষা</p>
+</div></div><div class="class-card" onclick="selectClass(10)"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80"><div class="class-info">
+<h3>Class 10</h3>
+<p>মাধ্যমিক শিক্ষা</p>
+</div></div></div></section><!-- SUBJECTS --><section class="section" id="subjects"><div class="section-title"><h2>📚 Popular Subjects</h2><p>প্রয়োজনীয় বিষয়গুলো সহজভাবে শেখ</p></div><div class="subject-grid"><div class="subject-card"><img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80"><div class="subject-content"><h3>📖 বাংলা</h3><p>
+বাংলা ব্যাকরণ, সাহিত্য,
+অনুচ্ছেদ ও গুরুত্বপূর্ণ প্রশ্ন।
+</p><button class="small-btn"
+onclick="openSubject('বাংলা')">
+Learn More
+</button>
+
+</div></div><div class="subject-card"><img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80"><div class="subject-content"><h3>🔤 English</h3><p>
+Grammar, vocabulary,
+writing এবং spoken English।
+</p><button class="small-btn"
+onclick="openSubject('English')">
+Learn More
+</button>
+
+</div></div><div class="subject-card"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80"><div class="subject-content"><h3>➗ গণিত</h3><p>
+সূত্র, উদাহরণ,
+সমাধান ও অনুশীলনী।
+</p><button class="small-btn"
+onclick="openSubject('গণিত')">
+Learn More
+</button>
+
+</div></div><div class="subject-card"><img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80"><div class="subject-content"><h3>🔬 বিজ্ঞান</h3><p>
+বিজ্ঞানের গুরুত্বপূর্ণ
+অধ্যায় ও প্রশ্নোত্তর।
+</p><button class="small-btn"
+onclick="openSubject('বিজ্ঞান')">
+Learn More
+</button>
+
+</div></div></div></section><!-- ABOUT --><section class="section"><div class="about"><div><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=80"></div><div class="about-text"><h2>🌟 Why BT Study Hub?</h2><p>
+BT Study Hub শিক্ষার্থীদের পড়াশোনাকে
+আরও সহজ ও আনন্দময় করার জন্য তৈরি।
+এখানে ক্লাস, বিষয়, নোট, কুইজ এবং
+শিক্ষামূলক কনটেন্ট এক জায়গায় পাওয়া যাবে।
+</p><br><p>
+নিয়মিত পড়াশোনা কর, Quiz দে এবং
+নিজের জ্ঞান যাচাই কর।
+</p></div></div></section><!-- FEATURES --><section class="section"><div class="section-title"><h2>✨ Our Features</h2><p>এক জায়গায় শিক্ষার প্রয়োজনীয় সুবিধা</p></div><div class="feature-grid"><div class="feature"><div class="feature-icon">🎥</div><h3>Video Classes</h3><p>
+ভিডিও ক্লাসের মাধ্যমে
+সহজে শেখার সুবিধা।
+</p></div><div class="feature"><div class="feature-icon">📄</div><h3>Study Notes</h3><p>
+গুরুত্বপূর্ণ অধ্যায়ের
+নোট পড়তে পারবি।
+</p></div><div class="feature"><div class="feature-icon">📝</div><h3>Online Quiz</h3><p>
+Quiz দিয়ে নিজের
+প্রস্তুতি যাচাই কর।
+</p></div><div class="feature"><div class="feature-icon">🏆</div><h3>Progress</h3><p>
+নিজের পড়াশোনার
+অগ্রগতি দেখতে পারবি।
+</p></div></div></section><!-- QUIZ --><section class="quiz" id="quiz"><h2>🧠 Test Your Knowledge</h2><p>
+আজকের Quiz দিয়ে নিজের জ্ঞান পরীক্ষা কর।
+</p><button class="btn primary"
+onclick="startQuiz()">
+🚀 Start Quiz
+</button>
+
+</section><!-- FOOTER --><footer><div class="footer-grid"><div class="footer-box"><h3>📚 BT Study Hub</h3><p>
+শিক্ষার্থীদের জন্য একটি আধুনিক
+অনলাইন শিক্ষা প্ল্যাটফর্ম।
+</p></div><div class="footer-box"><h3>Quick Links</h3><p>🏠 Home</p>
+<p>🎓 Classes</p>
+<p>📚 Subjects</p>
+<p>📝 Quiz</p></div><div class="footer-box"><h3>Contact</h3><p>📧 btstudyhub@example.com</p>
+<p>🌐 BT Study Hub</p></div></div><div class="copyright">© 2026 BT Study Hub | All Rights Reserved
+
+</div></footer><script>
+
+/* DARK MODE */
+
+function darkMode(){
+
+document.body.classList.toggle("dark");
+
+}
+
+
+/* LOGIN */
+
+function login(){
+
+alert(
+"🔐 Login System শীঘ্রই যুক্ত করা হবে!"
+);
+
+}
+
+
+/* CLASS */
+
+function selectClass(classNumber){
+
+alert(
+"🎓 তুমি Class " +
+classNumber +
+" নির্বাচন করেছো।"
+);
+
+}
+
+
+/* SUBJECT */
+
+function openSubject(subject){
+
+alert(
+"📚 " +
+subject +
+" বিভাগ শীঘ্রই খুলবে।"
+);
+
+}
+
+
+/* SEARCH */
+
+function searchLesson(){
+
+let value =
+document.getElementById("search").value;
+
+if(value.trim()===""){
+
+alert("🔍 কিছু লিখে Search কর।");
+
+}else{
+
+alert(
+"🔎 Searching: " + value
+);
+
+}
+
+}
+
+
+/* QUIZ */
+
+function startQuiz(){
+
+let answer=prompt(
+"🧠 Quiz Question\n\n" +
+"বাংলাদেশের রাজধানী কী?\n\n" +
+"1. ঢাকা\n" +
+"2. চট্টগ্রাম\n" +
+"3. খুলনা"
+);
+
+if(
+answer==="1" ||
+answer==="ঢাকা" ||
+answer==="Dhaka"
+){
+
+alert(
+"🎉 সঠিক উত্তর!\n\n" +
+"তোর উত্তর: ঢাকা"
+);
+
+}else{
+
+alert(
+"❌ ভুল উত্তর!\n\n" +
+"সঠিক উত্তর: ঢাকা"
+);
+
+}
+
+}
+
+</script></body>
+</html>
