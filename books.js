@@ -47,6 +47,12 @@ for (let classNumber = 1; classNumber <= 10; classNumber++) {
 //     title: "পঞ্চম শ্রেণির বাংলা বই",
 //     pdf: "এখানে-বৈধ-PDF-লিংক"
 // });
+    books.push({
+    class: 9,
+    subject: "বাংলা ১ম পত্র",
+    title: "Class 9-10 বাংলা সাহিত্য",
+    pdf: "books/class9/Secondary%20(BV)-2026_Class%209-10_Bangla%20Sahitto_compressed.pdf"
+});
 
 
 // ========================================
