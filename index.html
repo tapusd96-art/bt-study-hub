@@ -739,3 +739,234 @@ alert(
 
 </script></body>
 </html>
+<!-- BOOK LIBRARY -->
+
+<section class="section" id="book-library">
+
+<div class="section-title">
+<h2>📚 Digital Book Library</h2>
+<p>Class 1 থেকে Class 10 পর্যন্ত বই খুঁজে পড়</p>
+</div>
+
+<div class="book-controls">
+
+<select id="classFilter" onchange="displayBooks()">
+<option value="all">🎓 সব ক্লাস</option>
+<option value="1">Class 1</option>
+<option value="2">Class 2</option>
+<option value="3">Class 3</option>
+<option value="4">Class 4</option>
+<option value="5">Class 5</option>
+<option value="6">Class 6</option>
+<option value="7">Class 7</option>
+<option value="8">Class 8</option>
+<option value="9">Class 9</option>
+<option value="10">Class 10</option>
+</select>
+
+<select id="subjectFilter" onchange="displayBooks()">
+<option value="all">📚 সব বিষয়</option>
+<option value="বাংলা">বাংলা</option>
+<option value="English">English</option>
+<option value="গণিত">গণিত</option>
+<option value="বিজ্ঞান">বিজ্ঞান</option>
+</select>
+
+<input
+type="text"
+id="bookSearch"
+placeholder="🔎 বই খুঁজুন..."
+oninput="displayBooks()"
+>
+
+</div>
+
+<div id="bookList" class="book-grid"></div>
+
+</section>
+
+<style>
+
+.book-controls{
+    max-width:900px;
+    margin:0 auto 35px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.book-controls select,
+.book-controls input{
+    padding:13px 18px;
+    border:1px solid #ddd;
+    border-radius:25px;
+    outline:none;
+    font-size:15px;
+    background:white;
+}
+
+.book-controls input{
+    min-width:250px;
+}
+
+.book-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(230px,1fr));
+    gap:22px;
+}
+
+.book-card{
+    background:white;
+    padding:22px;
+    border-radius:18px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.book-card:hover{
+    transform:translateY(-6px);
+}
+
+.book-icon{
+    font-size:45px;
+    margin-bottom:12px;
+}
+
+.book-card h3{
+    color:#2563eb;
+    margin-bottom:8px;
+}
+
+.book-card p{
+    color:#6b7280;
+    margin-bottom:15px;
+}
+
+.book-btn{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:20px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    border:0;
+    cursor:pointer;
+}
+
+.dark .book-card{
+    background:#1e293b;
+    color:white;
+}
+
+.dark .book-card p{
+    color:#cbd5e1;
+}
+
+.dark .book-controls select,
+.dark .book-controls input{
+    background:#1e293b;
+    color:white;
+    border-color:#475569;
+}
+
+@media(max-width:500px){
+
+    .book-controls{
+        flex-direction:column;
+    }
+
+    .book-controls select,
+    .book-controls input{
+        width:100%;
+    }
+
+}
+
+</style>
+
+<script src="books.js"></script>
+
+<script>
+
+function displayBooks(){
+
+    const classValue =
+        document.getElementById("classFilter").value;
+
+    const subjectValue =
+        document.getElementById("subjectFilter").value;
+
+    const searchValue =
+        document.getElementById("bookSearch")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const bookList =
+        document.getElementById("bookList");
+
+    let filteredBooks = books.filter(book => {
+
+        const classMatch =
+            classValue === "all" ||
+            String(book.class) === classValue;
+
+        const subjectMatch =
+            subjectValue === "all" ||
+            book.subject === subjectValue;
+
+        const searchMatch =
+            book.title.toLowerCase()
+            .includes(searchValue);
+
+        return classMatch &&
+               subjectMatch &&
+               searchMatch;
+    });
+
+    if(filteredBooks.length === 0){
+
+        bookList.innerHTML = `
+            <div class="book-card">
+                <div class="book-icon">📚</div>
+                <h3>কোনো বই পাওয়া যায়নি</h3>
+                <p>অন্য Class বা Subject নির্বাচন কর।</p>
+            </div>
+        `;
+
+        return;
+    }
+
+    bookList.innerHTML =
+        filteredBooks.map(book => `
+
+        <div class="book-card">
+
+            <div class="book-icon">📖</div>
+
+            <h3>${book.title}</h3>
+
+            <p>
+                🎓 Class ${book.class}
+                <br>
+                📚 ${book.subject}
+            </p>
+
+            <button
+                class="book-btn"
+                onclick="openBook('${book.pdf}')">
+
+                📖 Read Book
+
+            </button>
+
+        </div>
+
+    `).join("");
+}
+
+displayBooks();
+
+</script>
