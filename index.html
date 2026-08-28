@@ -2054,6 +2054,192 @@ document
 
 </script>
 
+<!-- ========================================
+     BT STUDY HUB BOOK LIBRARY
+======================================== -->
 
+<section id="bookLibrary" style="padding:50px 20px;">
+
+    <div style="max-width:1100px;margin:auto;">
+
+        <h2 style="text-align:center;">
+            📚 Online Book Library
+        </h2>
+
+        <p style="text-align:center;">
+            Class ও Subject অনুযায়ী বই খুঁজে পড়ো
+        </p>
+
+        <div style="
+            display:flex;
+            gap:10px;
+            flex-wrap:wrap;
+            justify-content:center;
+            margin:25px 0;
+        ">
+
+            <select id="bookClassFilter">
+                <option value="all">সব Class</option>
+                <option value="1">Class 1</option>
+                <option value="2">Class 2</option>
+                <option value="3">Class 3</option>
+                <option value="4">Class 4</option>
+                <option value="5">Class 5</option>
+                <option value="6">Class 6</option>
+                <option value="7">Class 7</option>
+                <option value="8">Class 8</option>
+                <option value="9">Class 9</option>
+                <option value="10">Class 10</option>
+            </select>
+
+            <select id="bookSubjectFilter">
+                <option value="all">সব Subject</option>
+                <option value="বাংলা">বাংলা</option>
+                <option value="English">English</option>
+                <option value="গণিত">গণিত</option>
+                <option value="বাংলা ১ম পত্র">বাংলা ১ম পত্র</option>
+            </select>
+
+            <input
+                id="bookSearch"
+                type="text"
+                placeholder="🔎 বই খুঁজুন..."
+            >
+
+        </div>
+
+        <div
+            id="bookList"
+            style="
+                display:grid;
+                grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+                gap:20px;
+            "
+        ></div>
+
+    </div>
+
+</section>
+
+
+<script src="books.js"></script>
+
+<script>
+
+function displayBooks(){
+
+    const classValue =
+        document.getElementById("bookClassFilter").value;
+
+    const subjectValue =
+        document.getElementById("bookSubjectFilter").value;
+
+    const searchValue =
+        document.getElementById("bookSearch").value
+        .toLowerCase()
+        .trim();
+
+    let filteredBooks = books.filter(book => {
+
+        const classMatch =
+            classValue === "all" ||
+            String(book.class) === classValue;
+
+        const subjectMatch =
+            subjectValue === "all" ||
+            book.subject === subjectValue;
+
+        const searchMatch =
+            searchValue === "" ||
+            book.title.toLowerCase().includes(searchValue) ||
+            book.subject.toLowerCase().includes(searchValue) ||
+            String(book.class).includes(searchValue);
+
+        return classMatch &&
+               subjectMatch &&
+               searchMatch;
+    });
+
+
+    const bookList =
+        document.getElementById("bookList");
+
+
+    if(filteredBooks.length === 0){
+
+        bookList.innerHTML = `
+            <div style="
+                grid-column:1/-1;
+                text-align:center;
+                padding:40px;
+            ">
+                📚 কোনো বই পাওয়া যায়নি।
+            </div>
+        `;
+
+        return;
+    }
+
+
+    bookList.innerHTML =
+        filteredBooks.map(book => `
+
+            <div style="
+                padding:22px;
+                border-radius:15px;
+                background:#ffffff;
+                box-shadow:0 5px 20px rgba(0,0,0,.10);
+            ">
+
+                <div style="font-size:40px;">
+                    📖
+                </div>
+
+                <h3>
+                    ${book.title}
+                </h3>
+
+                <p>
+                    🎓 Class ${book.class}
+                </p>
+
+                <p>
+                    📚 ${book.subject}
+                </p>
+
+                <button
+                    onclick="openBook('${book.pdf}')"
+                    style="
+                        padding:10px 18px;
+                        border:0;
+                        border-radius:8px;
+                        cursor:pointer;
+                    "
+                >
+                    📖 বই পড়ুন
+                </button>
+
+            </div>
+
+        `).join("");
+}
+
+
+document
+    .getElementById("bookClassFilter")
+    .addEventListener("change", displayBooks);
+
+document
+    .getElementById("bookSubjectFilter")
+    .addEventListener("change", displayBooks);
+
+document
+    .getElementById("bookSearch")
+    .addEventListener("input", displayBooks);
+
+
+displayBooks();
+
+</script>
 </body>
 </html>
