@@ -1,12 +1,9 @@
 // ========================================
-// BT STUDY HUB - ONLINE BOOK LIBRARY
+// BT STUDY HUB
+// PROFESSIONAL ONLINE BOOK LIBRARY
 // ========================================
 
 const books = [
-
-    // ==============================
-    // CLASS 1
-    // ==============================
 
     {
         class: 1,
@@ -29,11 +26,6 @@ const books = [
         pdf: "https://nctb.gov.bd/pages/static-pages/695b9adec4774958d7b708cd"
     },
 
-
-    // ==============================
-    // CLASS 2
-    // ==============================
-
     {
         class: 2,
         subject: "বাংলা",
@@ -55,11 +47,6 @@ const books = [
         pdf: "https://nctb.gov.bd/pages/static-pages/695b9935c4774958d7b70508"
     },
 
-
-    // ==============================
-    // CLASS 9
-    // ==============================
-
     {
         class: 9,
         subject: "বাংলা ১ম পত্র",
@@ -71,15 +58,13 @@ const books = [
 
 
 // ========================================
-// OPEN ONLINE BOOK
+// BOOK OPEN
 // ========================================
 
 function openBook(url) {
 
     if (!url || url === "#") {
-
-        alert("📚 এই বইটির অনলাইন লিংক এখনো যোগ করা হয়নি।");
-
+        alert("📚 এই বইটির লিংক এখনো যোগ করা হয়নি।");
         return;
     }
 
@@ -88,7 +73,7 @@ function openBook(url) {
 
 
 // ========================================
-// SEARCH BOOKS
+// SEARCH
 // ========================================
 
 function searchBooks(keyword) {
@@ -96,31 +81,28 @@ function searchBooks(keyword) {
     keyword = keyword.toLowerCase().trim();
 
     return books.filter(book =>
-
         book.title.toLowerCase().includes(keyword) ||
-
         book.subject.toLowerCase().includes(keyword) ||
-
         String(book.class).includes(keyword)
-
     );
+
 }
 
 
 // ========================================
-// FILTER BOOKS
+// FILTER
 // ========================================
 
-function filterBooks(classNumber, subject) {
+function filterBooks(classNumber = "all", subject = "all") {
 
     return books.filter(book => {
 
         const classMatch =
-            !classNumber ||
+            classNumber === "all" ||
             String(book.class) === String(classNumber);
 
         const subjectMatch =
-            !subject ||
+            subject === "all" ||
             book.subject === subject;
 
         return classMatch && subjectMatch;
@@ -131,7 +113,7 @@ function filterBooks(classNumber, subject) {
 
 
 // ========================================
-// TOTAL BOOKS
+// BOOK COUNT
 // ========================================
 
 console.log(
