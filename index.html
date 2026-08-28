@@ -1,13 +1,24 @@
-<!DOCTYPE html><html lang="bn">
+<!DOCTYPE html>
+<html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>BT Study Hub</title><style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BT Study Hub — Learn Smarter</title>
+
+<meta name="description"
+content="BT Study Hub — শিক্ষার্থীদের জন্য আধুনিক অনলাইন শিক্ষা প্ল্যাটফর্ম। বই, নোট, কুইজ ও শিক্ষামূলক কনটেন্ট এক জায়গায়।">
+
+<style>
+
+/* ========================================
+   BT STUDY HUB — PROFESSIONAL STEP 1
+   ======================================== */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
 }
 
 html{
@@ -15,958 +26,2034 @@ html{
 }
 
 body{
-    background:#f4f7fb;
-    color:#1f2937;
-    transition:.3s;
+    font-family:
+    "Segoe UI",
+    "Noto Sans Bengali",
+    Arial,
+    sans-serif;
+
+    background:#f8fafc;
+    color:#0f172a;
+    line-height:1.6;
+
+    transition:
+    background .3s ease,
+    color .3s ease;
 }
 
-/* NAVBAR */
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+
+/* ========================================
+   NAVBAR
+   ======================================== */
 
 .navbar{
     position:sticky;
     top:0;
     z-index:1000;
-    background:white;
+
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(14px);
+
+    border-bottom:1px solid #e5e7eb;
+}
+
+.nav-inner{
+    min-height:72px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:13px 6%;
-    box-shadow:0 3px 15px rgba(0,0,0,.12);
+    gap:25px;
 }
 
 .logo{
     display:flex;
     align-items:center;
     gap:10px;
-    font-size:24px;
-    font-weight:bold;
-    color:#2563eb;
+
+    font-size:22px;
+    font-weight:800;
+    white-space:nowrap;
 }
 
-.logo img{
-    width:45px;
-    height:45px;
-    border-radius:50%;
-    object-fit:cover;
+.logo-mark{
+    width:42px;
+    height:42px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:13px;
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+
+    color:white;
+
+    box-shadow:
+    0 8px 20px rgba(37,99,235,.25);
 }
 
 .logo span{
-    color:#7c3aed;
+    color:#2563eb;
 }
 
 .nav-links{
     display:flex;
+    align-items:center;
+    gap:26px;
+
     list-style:none;
-    gap:25px;
 }
 
 .nav-links a{
-    text-decoration:none;
-    color:#333;
-    font-weight:bold;
+    color:#475569;
+    font-size:15px;
+    font-weight:600;
+
+    transition:.25s;
 }
 
 .nav-links a:hover{
     color:#2563eb;
 }
 
-.nav-buttons{
-    display:flex;
-    gap:8px;
-}
-
-.dark-btn,
-.login-btn{
-    border:0;
-    padding:10px 15px;
-    border-radius:22px;
-    cursor:pointer;
-}
-
-.dark-btn{
-    background:#111827;
-    color:white;
-}
-
-.login-btn{
-    background:#2563eb;
-    color:white;
-}
-
-/* HERO */
-
-.hero{
-    min-height:570px;
-    padding:60px 7%;
+.nav-actions{
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    gap:40px;
-    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    gap:10px;
+}
+
+.icon-btn{
+    width:42px;
+    height:42px;
+
+    border:1px solid #e2e8f0;
+    background:white;
+
+    border-radius:12px;
+
+    cursor:pointer;
+    transition:.25s;
+}
+
+.icon-btn:hover{
+    transform:translateY(-2px);
+    border-color:#2563eb;
+}
+
+.login-btn{
+    border:0;
+
+    background:#2563eb;
     color:white;
+
+    padding:11px 19px;
+    border-radius:12px;
+
+    font-weight:700;
+    cursor:pointer;
+
+    transition:.25s;
 }
 
-.hero-content{
-    max-width:600px;
+.login-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:
+    0 8px 20px rgba(37,99,235,.25);
 }
 
-.hero h1{
-    font-size:50px;
-    line-height:1.15;
+.menu-btn{
+    display:none;
+}
+
+
+/* ========================================
+   HERO
+   ======================================== */
+
+.hero{
+    padding:90px 0 70px;
+
+    background:
+    radial-gradient(
+        circle at 10% 10%,
+        rgba(37,99,235,.12),
+        transparent 35%
+    ),
+    radial-gradient(
+        circle at 90% 20%,
+        rgba(124,58,237,.10),
+        transparent 35%
+    );
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:
+    1.05fr .95fr;
+
+    gap:60px;
+    align-items:center;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    background:#eff6ff;
+    color:#2563eb;
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    font-size:14px;
+    font-weight:700;
+
     margin-bottom:20px;
 }
 
-.hero h1 span{
-    color:#facc15;
+.hero h1{
+    font-size:clamp(42px,6vw,72px);
+    line-height:1.05;
+
+    letter-spacing:-2px;
+
+    margin-bottom:22px;
 }
 
-.hero p{
+.hero h1 span{
+    display:block;
+
+    background:
+    linear-gradient(
+        90deg,
+        #2563eb,
+        #7c3aed
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+}
+
+.hero-text{
+    max-width:650px;
+
+    color:#64748b;
+
     font-size:18px;
-    line-height:1.8;
+
     margin-bottom:30px;
 }
 
 .hero-buttons{
     display:flex;
-    gap:15px;
+    gap:14px;
     flex-wrap:wrap;
 }
 
 .btn{
-    display:inline-block;
-    border:0;
-    padding:14px 25px;
-    border-radius:30px;
-    text-decoration:none;
-    font-weight:bold;
-    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+
+    padding:14px 22px;
+
+    border-radius:13px;
+
+    font-weight:700;
+
+    transition:.25s;
 }
 
-.primary{
+.btn-primary{
+    background:#2563eb;
+    color:white;
+
+    box-shadow:
+    0 10px 25px rgba(37,99,235,.22);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+}
+
+.btn-secondary{
     background:white;
+    border:1px solid #e2e8f0;
+    color:#334155;
+}
+
+.btn-secondary:hover{
+    border-color:#2563eb;
     color:#2563eb;
 }
 
-.secondary{
-    color:white;
-    border:2px solid white;
+.hero-visual{
+    position:relative;
 }
 
-.hero-image{
-    width:45%;
-    max-width:520px;
+.hero-card{
+    background:white;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:28px;
+
+    padding:25px;
+
+    box-shadow:
+    0 25px 70px rgba(15,23,42,.12);
 }
 
-.hero-image img{
-    width:100%;
-    border-radius:25px;
-    box-shadow:0 15px 40px rgba(0,0,0,.25);
+.hero-screen{
+    min-height:350px;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #eff6ff,
+        #f5f3ff
+    );
+
+    padding:25px;
 }
 
-/* SEARCH */
+.screen-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:25px;
+}
+
+.screen-title{
+    font-size:18px;
+    font-weight:800;
+}
+
+.status{
+    padding:6px 10px;
+    border-radius:20px;
+
+    background:#dcfce7;
+    color:#15803d;
+
+    font-size:12px;
+    font-weight:700;
+}
+
+.dashboard-card{
+    background:white;
+
+    border-radius:16px;
+
+    padding:20px;
+
+    margin-bottom:14px;
+
+    box-shadow:
+    0 8px 25px rgba(15,23,42,.07);
+}
+
+.progress-title{
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:10px;
+
+    font-weight:700;
+}
+
+.progress{
+    height:9px;
+
+    background:#e2e8f0;
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:72%;
+    height:100%;
+
+    background:
+    linear-gradient(
+        90deg,
+        #2563eb,
+        #7c3aed
+    );
+
+    border-radius:20px;
+}
+
+.float-card{
+    position:absolute;
+
+    right:-25px;
+    bottom:30px;
+
+    background:white;
+
+    padding:15px 18px;
+
+    border-radius:15px;
+
+    box-shadow:
+    0 15px 35px rgba(15,23,42,.15);
+
+    font-size:14px;
+    font-weight:700;
+}
+
+
+/* ========================================
+   SEARCH
+   ======================================== */
 
 .search-section{
-    padding:35px 20px;
-    text-align:center;
+    margin-top:-15px;
+    position:relative;
+    z-index:5;
 }
 
 .search-box{
-    max-width:650px;
+    max-width:850px;
     margin:auto;
-    display:flex;
+
     background:white;
-    border-radius:30px;
-    padding:5px;
-    box-shadow:0 5px 20px rgba(0,0,0,.1);
+
+    border:1px solid #e2e8f0;
+
+    padding:9px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    box-shadow:
+    0 15px 40px rgba(15,23,42,.10);
 }
 
 .search-box input{
     flex:1;
+
     border:0;
     outline:0;
-    padding:14px 20px;
+
+    padding:14px 17px;
+
+    background:transparent;
+
     font-size:16px;
 }
 
 .search-box button{
     border:0;
+
     background:#2563eb;
     color:white;
-    padding:0 25px;
-    border-radius:25px;
+
+    padding:0 24px;
+
+    border-radius:13px;
+
+    font-weight:700;
+
     cursor:pointer;
 }
 
-/* COMMON SECTION */
+
+/* ========================================
+   SECTIONS
+   ======================================== */
 
 .section{
-    max-width:1150px;
-    margin:auto;
-    padding:65px 20px;
+    padding:85px 0;
 }
 
-.section-title{
+.section-header{
     text-align:center;
-    margin-bottom:40px;
+
+    max-width:680px;
+
+    margin:
+    0 auto 45px;
 }
 
-.section-title h2{
-    font-size:32px;
-    margin-bottom:10px;
+.section-header .eyebrow{
+    color:#2563eb;
+
+    font-weight:800;
+
+    font-size:14px;
+
+    margin-bottom:8px;
 }
 
-.section-title p{
-    color:#6b7280;
+.section-header h2{
+    font-size:38px;
+
+    line-height:1.2;
+
+    margin-bottom:12px;
 }
 
-/* CLASS */
+.section-header p{
+    color:#64748b;
+}
+
+
+/* ========================================
+   CLASS GRID
+   ======================================== */
 
 .class-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:22px;
+
+    grid-template-columns:
+    repeat(5,1fr);
+
+    gap:18px;
 }
 
 .class-card{
     background:white;
+
+    border:1px solid #e2e8f0;
+
     border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 5px 18px rgba(0,0,0,.08);
+
+    padding:22px;
+
     cursor:pointer;
+
     transition:.3s;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.class-card::after{
+    content:"";
+
+    position:absolute;
+
+    width:90px;
+    height:90px;
+
+    right:-35px;
+    bottom:-35px;
+
+    border-radius:50%;
+
+    background:#eff6ff;
 }
 
 .class-card:hover{
-    transform:translateY(-8px);
+    transform:translateY(-7px);
+
+    border-color:#bfdbfe;
+
+    box-shadow:
+    0 15px 35px rgba(37,99,235,.12);
 }
 
-.class-card img{
-    width:100%;
-    height:130px;
-    object-fit:cover;
-}
+.class-number{
+    width:52px;
+    height:52px;
 
-.class-info{
-    padding:18px;
-    text-align:center;
-}
-
-.class-info h3{
-    color:#2563eb;
-    margin-bottom:8px;
-}
-
-.class-info p{
-    color:#777;
-}
-
-/* SUBJECT */
-
-.subject-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:25px;
-}
+    place-items:center;
 
-.subject-card{
-    background:white;
-    overflow:hidden;
-    border-radius:18px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-    transition:.3s;
-}
+    border-radius:15px;
 
-.subject-card:hover{
-    transform:translateY(-8px);
-}
+    background:#eff6ff;
 
-.subject-card img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
-}
-
-.subject-content{
-    padding:22px;
-}
-
-.subject-content h3{
     color:#2563eb;
-    margin-bottom:10px;
+
+    font-size:20px;
+
+    font-weight:900;
+
+    margin-bottom:17px;
 }
 
-.subject-content p{
-    color:#6b7280;
-    line-height:1.6;
-    margin-bottom:18px;
+.class-card h3{
+    margin-bottom:4px;
 }
 
-.small-btn{
-    border:0;
-    background:#2563eb;
-    color:white;
-    padding:10px 20px;
-    border-radius:20px;
-    cursor:pointer;
+.class-card p{
+    color:#64748b;
+
+    font-size:14px;
 }
 
-/* FEATURES */
+
+/* ========================================
+   FEATURES
+   ======================================== */
 
 .feature-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:22px;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:20px;
 }
 
-.feature{
+.feature-card{
     background:white;
-    padding:30px;
-    border-radius:18px;
-    box-shadow:0 5px 18px rgba(0,0,0,.07);
-    text-align:center;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:20px;
+
+    padding:28px;
+
+    transition:.3s;
+}
+
+.feature-card:hover{
+    transform:translateY(-6px);
+
+    box-shadow:
+    0 15px 35px rgba(15,23,42,.08);
 }
 
 .feature-icon{
-    font-size:45px;
-    margin-bottom:15px;
-}
+    width:55px;
+    height:55px;
 
-.feature h3{
-    margin-bottom:10px;
-}
-
-.feature p{
-    color:#6b7280;
-    line-height:1.6;
-}
-
-/* QUIZ */
-
-.quiz{
-    padding:70px 20px;
-    text-align:center;
-    color:white;
-    background:
-    linear-gradient(rgba(17,24,39,.9),rgba(17,24,39,.9)),
-    url("https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1400&q=80");
-    background-size:cover;
-    background-position:center;
-}
-
-.quiz h2{
-    font-size:36px;
-    margin-bottom:15px;
-}
-
-.quiz p{
-    margin-bottom:25px;
-    font-size:18px;
-}
-
-/* ABOUT */
-
-.about{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
-    align-items:center;
+    place-items:center;
+
+    border-radius:16px;
+
+    background:#eff6ff;
+
+    font-size:27px;
+
+    margin-bottom:18px;
 }
 
-.about img{
-    width:100%;
-    border-radius:22px;
+.feature-card h3{
+    margin-bottom:8px;
 }
 
-.about-text h2{
-    font-size:32px;
-    margin-bottom:15px;
+.feature-card p{
+    color:#64748b;
+
+    font-size:14px;
 }
 
-.about-text p{
-    color:#6b7280;
-    line-height:1.8;
+
+/* ========================================
+   STATS
+   ======================================== */
+
+.stats{
+    background:#0f172a;
+
+    color:white;
+
+    padding:55px 0;
 }
 
-/* FOOTER */
+.stats-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:25px;
+
+    text-align:center;
+}
+
+.stat h3{
+    font-size:35px;
+
+    margin-bottom:5px;
+}
+
+.stat p{
+    color:#94a3b8;
+}
+
+
+/* ========================================
+   CTA
+   ======================================== */
+
+.cta{
+    padding:85px 0;
+}
+
+.cta-box{
+    background:
+    linear-gradient(
+        135deg,
+        #1d4ed8,
+        #6d28d9
+    );
+
+    color:white;
+
+    border-radius:28px;
+
+    padding:55px;
+
+    text-align:center;
+
+    box-shadow:
+    0 25px 60px rgba(37,99,235,.20);
+}
+
+.cta-box h2{
+    font-size:38px;
+
+    margin-bottom:12px;
+}
+
+.cta-box p{
+    color:#dbeafe;
+
+    max-width:600px;
+
+    margin:0 auto 25px;
+}
+
+.cta-btn{
+    background:white;
+    color:#1d4ed8;
+}
+
+
+/* ========================================
+   FOOTER
+   ======================================== */
 
 footer{
-    background:#111827;
+    background:#020617;
+
     color:white;
-    padding:50px 20px 20px;
+
+    padding:60px 0 25px;
 }
 
 .footer-grid{
-    max-width:1100px;
-    margin:auto;
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:30px;
+
+    grid-template-columns:
+    1.5fr 1fr 1fr 1fr;
+
+    gap:35px;
+}
+
+.footer-logo{
+    font-size:22px;
+
+    font-weight:900;
+
+    margin-bottom:12px;
+}
+
+.footer-logo span{
+    color:#60a5fa;
+}
+
+.footer-box p{
+    color:#94a3b8;
+
+    font-size:14px;
+
+    line-height:1.8;
 }
 
 .footer-box h3{
     margin-bottom:15px;
 }
 
-.footer-box p{
-    color:#d1d5db;
-    line-height:1.8;
+.footer-links{
+    list-style:none;
+}
+
+.footer-links li{
+    margin-bottom:9px;
+}
+
+.footer-links a{
+    color:#94a3b8;
+
+    font-size:14px;
+
+    transition:.2s;
+}
+
+.footer-links a:hover{
+    color:white;
 }
 
 .copyright{
+    border-top:1px solid #1e293b;
+
+    margin-top:40px;
+
+    padding-top:22px;
+
     text-align:center;
-    border-top:1px solid #374151;
-    margin-top:35px;
-    padding-top:20px;
-    color:#9ca3af;
+
+    color:#64748b;
+
+    font-size:13px;
 }
 
-/* DARK MODE */
 
-.dark{
-    background:#0f172a;
+/* ========================================
+   DARK MODE
+   ======================================== */
+
+body.dark{
+    background:#020617;
     color:#f8fafc;
 }
 
-.dark .navbar,
-.dark .search-box,
-.dark .class-card,
-.dark .subject-card,
-.dark .feature{
-    background:#1e293b;
-    color:white;
+body.dark .navbar{
+    background:rgba(2,6,23,.92);
+
+    border-color:#1e293b;
 }
 
-.dark .nav-links a{
-    color:white;
-}
-
-.dark .section-title p,
-.dark .subject-content p,
-.dark .feature p,
-.dark .about-text p{
+body.dark .nav-links a{
     color:#cbd5e1;
 }
 
-/* MOBILE */
+body.dark .icon-btn{
+    background:#0f172a;
+    border-color:#334155;
+    color:white;
+}
 
-@media(max-width:800px){
+body.dark .hero{
+    background:
+    radial-gradient(
+        circle at 10% 10%,
+        rgba(37,99,235,.18),
+        transparent 35%
+    ),
+    radial-gradient(
+        circle at 90% 20%,
+        rgba(124,58,237,.15),
+        transparent 35%
+    );
+}
 
-    .navbar{
-        flex-wrap:wrap;
+body.dark .hero-text,
+body.dark .section-header p{
+    color:#94a3b8;
+}
+
+body.dark .badge{
+    background:#172554;
+}
+
+body.dark .hero-card,
+body.dark .dashboard-card,
+body.dark .search-box,
+body.dark .class-card,
+body.dark .feature-card,
+body.dark .btn-secondary{
+    background:#0f172a;
+    border-color:#1e293b;
+    color:white;
+}
+
+body.dark .class-card p,
+body.dark .feature-card p{
+    color:#94a3b8;
+}
+
+body.dark .class-card::after{
+    background:#172554;
+}
+
+body.dark .search-box input{
+    color:white;
+}
+
+body.dark .hero-screen{
+    background:#172554;
+}
+
+body.dark .progress{
+    background:#334155;
+}
+
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media(max-width:1000px){
+
+    .class-grid{
+        grid-template-columns:
+        repeat(3,1fr);
     }
 
-    .nav-links{
-        order:3;
-        width:100%;
-        justify-content:center;
-        gap:15px;
-        margin-top:10px;
+    .feature-grid{
+        grid-template-columns:
+        repeat(2,1fr);
     }
 
-    .hero{
-        flex-direction:column;
+    .footer-grid{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-content{
         text-align:center;
     }
 
-    .hero h1{
-        font-size:38px;
-    }
-
-    .hero-image{
-        width:100%;
+    .hero-text{
+        margin-left:auto;
+        margin-right:auto;
     }
 
     .hero-buttons{
         justify-content:center;
     }
 
-    .about{
-        grid-template-columns:1fr;
+}
+
+@media(max-width:700px){
+
+    .nav-links{
+        display:none;
+
+        position:absolute;
+
+        left:0;
+        right:0;
+        top:72px;
+
+        background:white;
+
+        border-bottom:1px solid #e2e8f0;
+
+        padding:20px;
+
+        flex-direction:column;
+
+        gap:17px;
     }
+
+    body.dark .nav-links{
+        background:#020617;
+        border-color:#1e293b;
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:grid;
+        place-items:center;
+    }
+
+    .login-btn{
+        display:none;
+    }
+
+    .class-grid{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .stats-grid{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .float-card{
+        right:5px;
+    }
+
 }
 
 @media(max-width:500px){
 
-    .nav-links a{
-        font-size:13px;
-    }
-
-    .logo{
-        font-size:20px;
+    .hero{
+        padding-top:55px;
     }
 
     .hero h1{
-        font-size:32px;
+        font-size:42px;
+        letter-spacing:-1px;
+    }
+
+    .hero-text{
+        font-size:16px;
+    }
+
+    .section{
+        padding:65px 0;
+    }
+
+    .section-header h2{
+        font-size:30px;
+    }
+
+    .class-grid{
+        grid-template-columns:1fr;
+    }
+
+    .feature-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .search-box{
+        flex-direction:column;
+        gap:8px;
     }
 
     .search-box button{
-        padding:0 15px;
-    }
-}
-
-</style></head><body><!-- NAVBAR --><nav class="navbar"><div class="logo"><img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=200&q=80">BT <span>Study Hub</span>
-
-</div><ul class="nav-links">
-<li><a href="#home">Home</a></li>
-<li><a href="#classes">Classes</a></li>
-<li><a href="#subjects">Subjects</a></li>
-<li><a href="#quiz">Quiz</a></li>
-</ul><div class="nav-buttons">
-<button class="dark-btn" onclick="darkMode()">🌙</button>
-<button class="login-btn" onclick="login()">Login</button>
-</div></nav><!-- HERO --><section class="hero" id="home"><div class="hero-content"><h1>
-Learn Today,
-<span>Lead Tomorrow</span>
-</h1><p>
-BT Study Hub হলো শিক্ষার্থীদের জন্য একটি
-আধুনিক অনলাইন শিক্ষা প্ল্যাটফর্ম।
-এখানে ক্লাস, নোট, কুইজ ও শিক্ষামূলক
-কনটেন্ট এক জায়গায় পাওয়া যাবে।
-</p><div class="hero-buttons"><a href="#classes" class="btn primary">
-🚀 Start Learning
-</a><a href="#subjects" class="btn secondary">
-📚 Explore Subjects
-</a></div></div><div class="hero-image"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=80"></div></section><!-- SEARCH --><section class="search-section"><div class="search-box"><input
-type="text"
-id="search"
-placeholder="🔍 Search your lesson..."
-
-«»
-
-<button onclick="searchLesson()">
-Search
-</button></div></section><!-- CLASSES --><section class="section" id="classes"><div class="section-title"><h2>🎓 Choose Your Class</h2><p>তোর ক্লাস নির্বাচন করে পড়াশোনা শুরু কর</p></div><div class="class-grid"><div class="class-card" onclick="selectClass(1)"><img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=600&q=80"><div class="class-info">
-<h3>Class 1</h3>
-<p>প্রাথমিক শিক্ষা</p>
-</div></div><div class="class-card" onclick="selectClass(2)"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=600&q=80"><div class="class-info">
-<h3>Class 2</h3>
-<p>প্রাথমিক শিক্ষা</p>
-</div></div><div class="class-card" onclick="selectClass(3)"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80"><div class="class-info">
-<h3>Class 3</h3>
-<p>প্রাথমিক শিক্ষা</p>
-</div></div><div class="class-card" onclick="selectClass(4)"><img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=600&q=80"><div class="class-info">
-<h3>Class 4</h3>
-<p>প্রাথমিক শিক্ষা</p>
-</div></div><div class="class-card" onclick="selectClass(5)"><img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80"><div class="class-info">
-<h3>Class 5</h3>
-<p>প্রাথমিক শিক্ষা</p>
-</div></div><div class="class-card" onclick="selectClass(6)"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=80"><div class="class-info">
-<h3>Class 6</h3>
-<p>মাধ্যমিক শিক্ষা</p>
-</div></div><div class="class-card" onclick="selectClass(7)"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"><div class="class-info">
-<h3>Class 7</h3>
-<p>মাধ্যমিক শিক্ষা</p>
-</div></div><div class="class-card" onclick="selectClass(8)"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80"><div class="class-info">
-<h3>Class 8</h3>
-<p>মাধ্যমিক শিক্ষা</p>
-</div></div><div class="class-card" onclick="selectClass(9)"><img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80"><div class="class-info">
-<h3>Class 9</h3>
-<p>মাধ্যমিক শিক্ষা</p>
-</div></div><div class="class-card" onclick="selectClass(10)"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80"><div class="class-info">
-<h3>Class 10</h3>
-<p>মাধ্যমিক শিক্ষা</p>
-</div></div></div></section><!-- SUBJECTS --><section class="section" id="subjects"><div class="section-title"><h2>📚 Popular Subjects</h2><p>প্রয়োজনীয় বিষয়গুলো সহজভাবে শেখ</p></div><div class="subject-grid"><div class="subject-card"><img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80"><div class="subject-content"><h3>📖 বাংলা</h3><p>
-বাংলা ব্যাকরণ, সাহিত্য,
-অনুচ্ছেদ ও গুরুত্বপূর্ণ প্রশ্ন।
-</p><button class="small-btn"
-onclick="openSubject('বাংলা')">
-Learn More
-</button>
-
-</div></div><div class="subject-card"><img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80"><div class="subject-content"><h3>🔤 English</h3><p>
-Grammar, vocabulary,
-writing এবং spoken English।
-</p><button class="small-btn"
-onclick="openSubject('English')">
-Learn More
-</button>
-
-</div></div><div class="subject-card"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80"><div class="subject-content"><h3>➗ গণিত</h3><p>
-সূত্র, উদাহরণ,
-সমাধান ও অনুশীলনী।
-</p><button class="small-btn"
-onclick="openSubject('গণিত')">
-Learn More
-</button>
-
-</div></div><div class="subject-card"><img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80"><div class="subject-content"><h3>🔬 বিজ্ঞান</h3><p>
-বিজ্ঞানের গুরুত্বপূর্ণ
-অধ্যায় ও প্রশ্নোত্তর।
-</p><button class="small-btn"
-onclick="openSubject('বিজ্ঞান')">
-Learn More
-</button>
-
-</div></div></div></section><!-- ABOUT --><section class="section"><div class="about"><div><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=80"></div><div class="about-text"><h2>🌟 Why BT Study Hub?</h2><p>
-BT Study Hub শিক্ষার্থীদের পড়াশোনাকে
-আরও সহজ ও আনন্দময় করার জন্য তৈরি।
-এখানে ক্লাস, বিষয়, নোট, কুইজ এবং
-শিক্ষামূলক কনটেন্ট এক জায়গায় পাওয়া যাবে।
-</p><br><p>
-নিয়মিত পড়াশোনা কর, Quiz দে এবং
-নিজের জ্ঞান যাচাই কর।
-</p></div></div></section><!-- FEATURES --><section class="section"><div class="section-title"><h2>✨ Our Features</h2><p>এক জায়গায় শিক্ষার প্রয়োজনীয় সুবিধা</p></div><div class="feature-grid"><div class="feature"><div class="feature-icon">🎥</div><h3>Video Classes</h3><p>
-ভিডিও ক্লাসের মাধ্যমে
-সহজে শেখার সুবিধা।
-</p></div><div class="feature"><div class="feature-icon">📄</div><h3>Study Notes</h3><p>
-গুরুত্বপূর্ণ অধ্যায়ের
-নোট পড়তে পারবি।
-</p></div><div class="feature"><div class="feature-icon">📝</div><h3>Online Quiz</h3><p>
-Quiz দিয়ে নিজের
-প্রস্তুতি যাচাই কর।
-</p></div><div class="feature"><div class="feature-icon">🏆</div><h3>Progress</h3><p>
-নিজের পড়াশোনার
-অগ্রগতি দেখতে পারবি।
-</p></div></div></section><!-- QUIZ --><section class="quiz" id="quiz"><h2>🧠 Test Your Knowledge</h2><p>
-আজকের Quiz দিয়ে নিজের জ্ঞান পরীক্ষা কর।
-</p><button class="btn primary"
-onclick="startQuiz()">
-🚀 Start Quiz
-</button>
-
-</section><!-- FOOTER --><footer><div class="footer-grid"><div class="footer-box"><h3>📚 BT Study Hub</h3><p>
-শিক্ষার্থীদের জন্য একটি আধুনিক
-অনলাইন শিক্ষা প্ল্যাটফর্ম।
-</p></div><div class="footer-box"><h3>Quick Links</h3><p>🏠 Home</p>
-<p>🎓 Classes</p>
-<p>📚 Subjects</p>
-<p>📝 Quiz</p></div><div class="footer-box"><h3>Contact</h3><p>📧 btstudyhub@example.com</p>
-<p>🌐 BT Study Hub</p></div></div><div class="copyright">© 2026 BT Study Hub | All Rights Reserved
-
-</div></footer><script>
-
-/* DARK MODE */
-
-function darkMode(){
-
-document.body.classList.toggle("dark");
-
-}
-
-
-/* LOGIN */
-
-function login(){
-
-alert(
-"🔐 Login System শীঘ্রই যুক্ত করা হবে!"
-);
-
-}
-
-
-/* CLASS */
-
-function selectClass(classNumber){
-
-alert(
-"🎓 তুমি Class " +
-classNumber +
-" নির্বাচন করেছো।"
-);
-
-}
-
-
-/* SUBJECT */
-
-function openSubject(subject){
-
-alert(
-"📚 " +
-subject +
-" বিভাগ শীঘ্রই খুলবে।"
-);
-
-}
-
-
-/* SEARCH */
-
-function searchLesson(){
-
-let value =
-document.getElementById("search").value;
-
-if(value.trim()===""){
-
-alert("🔍 কিছু লিখে Search কর।");
-
-}else{
-
-alert(
-"🔎 Searching: " + value
-);
-
-}
-
-}
-
-
-/* QUIZ */
-
-function startQuiz(){
-
-let answer=prompt(
-"🧠 Quiz Question\n\n" +
-"বাংলাদেশের রাজধানী কী?\n\n" +
-"1. ঢাকা\n" +
-"2. চট্টগ্রাম\n" +
-"3. খুলনা"
-);
-
-if(
-answer==="1" ||
-answer==="ঢাকা" ||
-answer==="Dhaka"
-){
-
-alert(
-"🎉 সঠিক উত্তর!\n\n" +
-"তোর উত্তর: ঢাকা"
-);
-
-}else{
-
-alert(
-"❌ ভুল উত্তর!\n\n" +
-"সঠিক উত্তর: ঢাকা"
-);
-
-}
-
-}
-
-</script></body>
-</html>
-<!-- BOOK LIBRARY -->
-
-<section class="section" id="book-library">
-
-<div class="section-title">
-<h2>📚 Digital Book Library</h2>
-<p>Class 1 থেকে Class 10 পর্যন্ত বই খুঁজে পড়</p>
-</div>
-
-<div class="book-controls">
-
-<select id="classFilter" onchange="displayBooks()">
-<option value="all">🎓 সব ক্লাস</option>
-<option value="1">Class 1</option>
-<option value="2">Class 2</option>
-<option value="3">Class 3</option>
-<option value="4">Class 4</option>
-<option value="5">Class 5</option>
-<option value="6">Class 6</option>
-<option value="7">Class 7</option>
-<option value="8">Class 8</option>
-<option value="9">Class 9</option>
-<option value="10">Class 10</option>
-</select>
-
-<select id="subjectFilter" onchange="displayBooks()">
-<option value="all">📚 সব বিষয়</option>
-<option value="বাংলা">বাংলা</option>
-<option value="English">English</option>
-<option value="গণিত">গণিত</option>
-<option value="বিজ্ঞান">বিজ্ঞান</option>
-</select>
-
-<input
-type="text"
-id="bookSearch"
-placeholder="🔎 বই খুঁজুন..."
-oninput="displayBooks()"
->
-
-</div>
-
-<div id="bookList" class="book-grid"></div>
-
-</section>
-
-<style>
-
-.book-controls{
-    max-width:900px;
-    margin:0 auto 35px;
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    justify-content:center;
-}
-
-.book-controls select,
-.book-controls input{
-    padding:13px 18px;
-    border:1px solid #ddd;
-    border-radius:25px;
-    outline:none;
-    font-size:15px;
-    background:white;
-}
-
-.book-controls input{
-    min-width:250px;
-}
-
-.book-grid{
-    display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(230px,1fr));
-    gap:22px;
-}
-
-.book-card{
-    background:white;
-    padding:22px;
-    border-radius:18px;
-    box-shadow:0 5px 18px rgba(0,0,0,.08);
-    transition:.3s;
-}
-
-.book-card:hover{
-    transform:translateY(-6px);
-}
-
-.book-icon{
-    font-size:45px;
-    margin-bottom:12px;
-}
-
-.book-card h3{
-    color:#2563eb;
-    margin-bottom:8px;
-}
-
-.book-card p{
-    color:#6b7280;
-    margin-bottom:15px;
-}
-
-.book-btn{
-    display:inline-block;
-    padding:10px 18px;
-    border-radius:20px;
-    background:#2563eb;
-    color:white;
-    text-decoration:none;
-    border:0;
-    cursor:pointer;
-}
-
-.dark .book-card{
-    background:#1e293b;
-    color:white;
-}
-
-.dark .book-card p{
-    color:#cbd5e1;
-}
-
-.dark .book-controls select,
-.dark .book-controls input{
-    background:#1e293b;
-    color:white;
-    border-color:#475569;
-}
-
-@media(max-width:500px){
-
-    .book-controls{
-        flex-direction:column;
+        min-height:48px;
     }
 
-    .book-controls select,
-    .book-controls input{
-        width:100%;
+    .cta-box{
+        padding:40px 20px;
     }
 
+    .cta-box h2{
+        font-size:30px;
+    }
+
+}
+
+
+/* ========================================
+   ANIMATION
+   ======================================== */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.hero-content,
+.hero-visual{
+    animation:
+    fadeUp .7s ease both;
 }
 
 </style>
+</head>
 
-<script src="books.js"></script>
+
+<body>
+
+
+<!-- =====================================
+     NAVBAR
+     ===================================== -->
+
+<nav class="navbar">
+
+<div class="container nav-inner">
+
+<a href="#home" class="logo">
+
+<div class="logo-mark">
+📚
+</div>
+
+BT <span>Study Hub</span>
+
+</a>
+
+
+<ul class="nav-links" id="navLinks">
+
+<li>
+<a href="#home">Home</a>
+</li>
+
+<li>
+<a href="#classes">Classes</a>
+</li>
+
+<li>
+<a href="#features">Features</a>
+</li>
+
+<li>
+<a href="#about">About</a>
+</li>
+
+<li>
+<a href="#contact">Contact</a>
+</li>
+
+</ul>
+
+
+<div class="nav-actions">
+
+<button
+class="icon-btn"
+id="themeBtn"
+onclick="toggleDarkMode()"
+aria-label="Toggle dark mode">
+
+🌙
+
+</button>
+
+<button
+class="icon-btn menu-btn"
+onclick="toggleMenu()"
+aria-label="Open menu">
+
+☰
+
+</button>
+
+<button
+class="login-btn"
+onclick="showLogin()">
+
+Login
+
+</button>
+
+</div>
+
+</div>
+
+</nav>
+
+
+
+<!-- =====================================
+     HERO
+     ===================================== -->
+
+<main>
+
+<section class="hero" id="home">
+
+<div class="container hero-grid">
+
+
+<div class="hero-content">
+
+<div class="badge">
+✨ Smart Learning Platform
+</div>
+
+
+<h1>
+
+Learn Smarter.
+<span>Lead Tomorrow.</span>
+
+</h1>
+
+
+<p class="hero-text">
+
+BT Study Hub হলো শিক্ষার্থীদের জন্য
+একটি আধুনিক ডিজিটাল শিক্ষা প্ল্যাটফর্ম।
+বই, ক্লাস, নোট, কুইজ ও প্রয়োজনীয়
+শিক্ষামূলক কনটেন্ট এক জায়গায়।
+
+</p>
+
+
+<div class="hero-buttons">
+
+<a
+href="#classes"
+class="btn btn-primary">
+
+🚀 Start Learning
+
+</a>
+
+
+<a
+href="#features"
+class="btn btn-secondary">
+
+✨ Explore Features
+
+</a>
+
+</div>
+
+</div>
+
+
+
+<div class="hero-visual">
+
+<div class="hero-card">
+
+<div class="hero-screen">
+
+<div class="screen-top">
+
+<div class="screen-title">
+📊 My Learning
+</div>
+
+<div class="status">
+● Active
+</div>
+
+</div>
+
+
+<div class="dashboard-card">
+
+<div class="progress-title">
+
+<span>
+📚 Today's Progress
+</span>
+
+<strong>
+72%
+</strong>
+
+</div>
+
+<div class="progress">
+
+<div class="progress-bar"></div>
+
+</div>
+
+</div>
+
+
+<div class="dashboard-card">
+
+📖 Continue Learning
+
+<br>
+
+<strong>
+Class 9 — বাংলা সাহিত্য
+</strong>
+
+</div>
+
+
+<div class="dashboard-card">
+
+🎯 Today's Challenge
+
+<br>
+
+<strong>
+10 MCQ Questions
+</strong>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="float-card">
+🔥 Keep Learning!
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     SEARCH
+     ===================================== -->
+
+<section class="search-section">
+
+<div class="container">
+
+<div class="search-box">
+
+<input
+type="text"
+id="globalSearch"
+placeholder="🔎 Search books, classes, subjects..."
+autocomplete="off"
+>
+
+<button onclick="globalSearch()">
+Search
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     CLASSES
+     ===================================== -->
+
+<section
+class="section"
+id="classes">
+
+<div class="container">
+
+<div class="section-header">
+
+<div class="eyebrow">
+LEARNING PATH
+</div>
+
+<h2>
+🎓 Choose Your Class
+</h2>
+
+<p>
+তোর ক্লাস নির্বাচন করে পড়াশোনা শুরু কর।
+</p>
+
+</div>
+
+
+<div class="class-grid">
+
+
+<div class="class-card"
+onclick="selectClass(1)">
+
+<div class="class-number">
+01
+</div>
+
+<h3>Class 1</h3>
+
+<p>প্রাথমিক শিক্ষা</p>
+
+</div>
+
+
+<div class="class-card"
+onclick="selectClass(2)">
+
+<div class="class-number">
+02
+</div>
+
+<h3>Class 2</h3>
+
+<p>প্রাথমিক শিক্ষা</p>
+
+</div>
+
+
+<div class="class-card"
+onclick="selectClass(3)">
+
+<div class="class-number">
+03
+</div>
+
+<h3>Class 3</h3>
+
+<p>প্রাথমিক শিক্ষা</p>
+
+</div>
+
+
+<div class="class-card"
+onclick="selectClass(4)">
+
+<div class="class-number">
+04
+</div>
+
+<h3>Class 4</h3>
+
+<p>প্রাথমিক শিক্ষা</p>
+
+</div>
+
+
+<div class="class-card"
+onclick="selectClass(5)">
+
+<div class="class-number">
+05
+</div>
+
+<h3>Class 5</h3>
+
+<p>প্রাথমিক শিক্ষা</p>
+
+</div>
+
+
+<div class="class-card"
+onclick="selectClass(6)">
+
+<div class="class-number">
+06
+</div>
+
+<h3>Class 6</h3>
+
+<p>মাধ্যমিক শিক্ষা</p>
+
+</div>
+
+
+<div class="class-card"
+onclick="selectClass(7)">
+
+<div class="class-number">
+07
+</div>
+
+<h3>Class 7</h3>
+
+<p>মাধ্যমিক শিক্ষা</p>
+
+</div>
+
+
+<div class="class-card"
+onclick="selectClass(8)">
+
+<div class="class-number">
+08
+</div>
+
+<h3>Class 8</h3>
+
+<p>মাধ্যমিক শিক্ষা</p>
+
+</div>
+
+
+<div class="class-card"
+onclick="selectClass(9)">
+
+<div class="class-number">
+09
+</div>
+
+<h3>Class 9</h3>
+
+<p>মাধ্যমিক শিক্ষা</p>
+
+</div>
+
+
+<div class="class-card"
+onclick="selectClass(10)">
+
+<div class="class-number">
+10
+</div>
+
+<h3>Class 10</h3>
+
+<p>মাধ্যমিক শিক্ষা</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     STATS
+     ===================================== -->
+
+<section class="stats">
+
+<div class="container stats-grid">
+
+<div class="stat">
+
+<h3>10+</h3>
+
+<p>Classes</p>
+
+</div>
+
+
+<div class="stat">
+
+<h3>40+</h3>
+
+<p>Subjects</p>
+
+</div>
+
+
+<div class="stat">
+
+<h3>100+</h3>
+
+<p>Learning Resources</p>
+
+</div>
+
+
+<div class="stat">
+
+<h3>24/7</h3>
+
+<p>Learning Access</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     FEATURES
+     ===================================== -->
+
+<section
+class="section"
+id="features">
+
+<div class="container">
+
+<div class="section-header">
+
+<div class="eyebrow">
+WHY BT STUDY HUB
+</div>
+
+<h2>
+✨ Everything You Need to Learn
+</h2>
+
+<p>
+পড়াশোনার প্রয়োজনীয় জিনিসগুলো
+এক জায়গায় সহজভাবে।
+</p>
+
+</div>
+
+
+<div class="feature-grid">
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+📚
+</div>
+
+<h3>
+Digital Books
+</h3>
+
+<p>
+Class 1 থেকে Class 10 পর্যন্ত
+ডিজিটাল বই সহজে খুঁজে পড়।
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+📝
+</div>
+
+<h3>
+Study Notes
+</h3>
+
+<p>
+গুরুত্বপূর্ণ অধ্যায় ও বিষয়ভিত্তিক
+নোট পড়ার সুবিধা।
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+🎯
+</div>
+
+<h3>
+Online Quiz
+</h3>
+
+<p>
+MCQ ও Quiz দিয়ে নিজের
+প্রস্তুতি যাচাই কর।
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+🎥
+</div>
+
+<h3>
+Video Learning
+</h3>
+
+<p>
+ভিডিও ক্লাসের মাধ্যমে
+কঠিন বিষয় সহজে শেখ।
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     ABOUT
+     ===================================== -->
+
+<section
+class="section"
+id="about">
+
+<div class="container">
+
+<div class="section-header">
+
+<div class="eyebrow">
+ABOUT US
+</div>
+
+<h2>
+🌟 Why BT Study Hub?
+</h2>
+
+<p>
+BT Study Hub-এর লক্ষ্য হলো
+শিক্ষার্থীদের পড়াশোনাকে আরও
+সহজ, আধুনিক ও আনন্দময় করা।
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     CTA
+     ===================================== -->
+
+<section class="cta">
+
+<div class="container">
+
+<div class="cta-box">
+
+<h2>
+🚀 Start Your Learning Journey
+</h2>
+
+<p>
+আজ থেকেই নিজের পড়াশোনাকে
+আরও organized ও smart করে তোল।
+</p>
+
+<a
+href="#classes"
+class="btn cta-btn">
+
+Start Learning →
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     FOOTER
+     ===================================== -->
+
+<footer id="contact">
+
+<div class="container">
+
+<div class="footer-grid">
+
+
+<div class="footer-box">
+
+<div class="footer-logo">
+BT <span>Study Hub</span>
+</div>
+
+<p>
+শিক্ষার্থীদের জন্য একটি আধুনিক
+ডিজিটাল শিক্ষা প্ল্যাটফর্ম।
+</p>
+
+</div>
+
+
+<div class="footer-box">
+
+<h3>
+Explore
+</h3>
+
+<ul class="footer-links">
+
+<li>
+<a href="#home">Home</a>
+</li>
+
+<li>
+<a href="#classes">Classes</a>
+</li>
+
+<li>
+<a href="#features">Features</a>
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="footer-box">
+
+<h3>
+Learning
+</h3>
+
+<ul class="footer-links">
+
+<li>
+<a href="#classes">Books</a>
+</li>
+
+<li>
+<a href="#features">Quiz</a>
+</li>
+
+<li>
+<a href="#features">Notes</a>
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="footer-box">
+
+<h3>
+Contact
+</h3>
+
+<p>
+📧 btstudyhub@example.com
+</p>
+
+<p>
+🌐 BT Study Hub
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="copyright">
+
+© 2026 BT Study Hub.
+All Rights Reserved.
+
+</div>
+
+</div>
+
+</footer>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+     ===================================== -->
 
 <script>
 
-function displayBooks(){
+/* ========================================
+   DARK MODE
+   ======================================== */
 
-    const classValue =
-        document.getElementById("classFilter").value;
+function toggleDarkMode(){
 
-    const subjectValue =
-        document.getElementById("subjectFilter").value;
+    document.body.classList.toggle("dark");
 
-    const searchValue =
-        document.getElementById("bookSearch")
-        .value
-        .toLowerCase()
-        .trim();
+    const button =
+        document.getElementById("themeBtn");
 
-    const bookList =
-        document.getElementById("bookList");
+    if(document.body.classList.contains("dark")){
 
-    let filteredBooks = books.filter(book => {
+        button.textContent = "☀️";
 
-        const classMatch =
-            classValue === "all" ||
-            String(book.class) === classValue;
+        localStorage.setItem(
+            "bt-theme",
+            "dark"
+        );
 
-        const subjectMatch =
-            subjectValue === "all" ||
-            book.subject === subjectValue;
+    }else{
 
-        const searchMatch =
-            book.title.toLowerCase()
-            .includes(searchValue);
+        button.textContent = "🌙";
 
-        return classMatch &&
-               subjectMatch &&
-               searchMatch;
+        localStorage.setItem(
+            "bt-theme",
+            "light"
+        );
+
+    }
+
+}
+
+
+/* Load saved theme */
+
+if(
+    localStorage.getItem("bt-theme")
+    === "dark"
+){
+
+    document.body.classList.add("dark");
+
+    document.getElementById(
+        "themeBtn"
+    ).textContent = "☀️";
+
+}
+
+
+/* ========================================
+   MOBILE MENU
+   ======================================== */
+
+function toggleMenu(){
+
+    document
+        .getElementById("navLinks")
+        .classList.toggle("active");
+
+}
+
+
+/* Close mobile menu after clicking */
+
+document
+    .querySelectorAll(".nav-links a")
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            () => {
+
+                document
+                    .getElementById("navLinks")
+                    .classList.remove("active");
+
+            }
+        );
+
     });
 
-    if(filteredBooks.length === 0){
 
-        bookList.innerHTML = `
-            <div class="book-card">
-                <div class="book-icon">📚</div>
-                <h3>কোনো বই পাওয়া যায়নি</h3>
-                <p>অন্য Class বা Subject নির্বাচন কর।</p>
-            </div>
-        `;
+/* ========================================
+   LOGIN
+   ======================================== */
+
+function showLogin(){
+
+    alert(
+        "🔐 Student Login System\n\n" +
+        "এই ফিচারটি পরবর্তী ধাপে যুক্ত করা হবে।"
+    );
+
+}
+
+
+/* ========================================
+   CLASS
+   ======================================== */
+
+function selectClass(classNumber){
+
+    alert(
+        "🎓 Class " +
+        classNumber +
+        " নির্বাচন করা হয়েছে।\n\n" +
+        "Class-based learning system পরবর্তী ধাপে যুক্ত হবে।"
+    );
+
+}
+
+
+/* ========================================
+   GLOBAL SEARCH
+   ======================================== */
+
+function globalSearch(){
+
+    const input =
+        document.getElementById(
+            "globalSearch"
+        );
+
+    const value =
+        input.value.trim();
+
+    if(value === ""){
+
+        alert(
+            "🔎 কিছু লিখে Search কর।"
+        );
+
+        input.focus();
 
         return;
     }
 
-    bookList.innerHTML =
-        filteredBooks.map(book => `
+    /*
+       STEP 2-তে এখানে
+       books.js-এর real search
+       system যুক্ত করা হবে।
+    */
 
-        <div class="book-card">
+    alert(
+        "🔎 Searching for:\n\n" +
+        value +
+        "\n\n" +
+        "Smart Search System পরবর্তী ধাপে যুক্ত হবে।"
+    );
 
-            <div class="book-icon">📖</div>
-
-            <h3>${book.title}</h3>
-
-            <p>
-                🎓 Class ${book.class}
-                <br>
-                📚 ${book.subject}
-            </p>
-
-            <button
-                class="book-btn"
-                onclick="openBook('${book.pdf}')">
-
-                📖 Read Book
-
-            </button>
-
-        </div>
-
-    `).join("");
 }
 
-displayBooks();
+
+/* Enter key search */
+
+document
+    .getElementById("globalSearch")
+    .addEventListener(
+        "keydown",
+        function(event){
+
+            if(event.key === "Enter"){
+
+                globalSearch();
+
+            }
+
+        }
+    );
 
 </script>
+
+
+</body>
+</html>
