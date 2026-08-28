@@ -1,86 +1,94 @@
 // ========================================
-// BT STUDY HUB - BOOK LIBRARY
-// Class 1 - 10
+// BT STUDY HUB - ONLINE BOOK LIBRARY
 // ========================================
 
-const books = [];
+const books = [
 
-// Class 1 - 10 তৈরি
-for (let classNumber = 1; classNumber <= 10; classNumber++) {
+    // ==============================
+    // CLASS 1
+    // ==============================
 
-    books.push(
-        {
-            class: classNumber,
-            subject: "বাংলা",
-            title: `Class ${classNumber} - বাংলা`,
-            pdf: "#"
-        },
-        {
-            class: classNumber,
-            subject: "English",
-            title: `Class ${classNumber} - English`,
-            pdf: "#"
-        },
-        {
-            class: classNumber,
-            subject: "গণিত",
-            title: `Class ${classNumber} - গণিত`,
-            pdf: "#"
-        },
-        {
-            class: classNumber,
-            subject: "বিজ্ঞান",
-            title: `Class ${classNumber} - বিজ্ঞান`,
-            pdf: "#"
-        }
-    );
+    {
+        class: 1,
+        subject: "বাংলা",
+        title: "Class 1 - আমার বাংলা বই",
+        pdf: "https://nctb.gov.bd/pages/static-pages/695b9adec4774958d7b708cd"
+    },
+
+    {
+        class: 1,
+        subject: "English",
+        title: "Class 1 - English for Today",
+        pdf: "https://nctb.gov.bd/pages/static-pages/695b9adec4774958d7b708cd"
+    },
+
+    {
+        class: 1,
+        subject: "গণিত",
+        title: "Class 1 - প্রাথমিক গণিত",
+        pdf: "https://nctb.gov.bd/pages/static-pages/695b9adec4774958d7b708cd"
+    },
+
+
+    // ==============================
+    // CLASS 2
+    // ==============================
+
+    {
+        class: 2,
+        subject: "বাংলা",
+        title: "Class 2 - আমার বাংলা বই",
+        pdf: "https://nctb.gov.bd/pages/static-pages/695b9935c4774958d7b70508"
+    },
+
+    {
+        class: 2,
+        subject: "English",
+        title: "Class 2 - English for Today",
+        pdf: "https://nctb.gov.bd/pages/static-pages/695b9935c4774958d7b70508"
+    },
+
+    {
+        class: 2,
+        subject: "গণিত",
+        title: "Class 2 - প্রাথমিক গণিত",
+        pdf: "https://nctb.gov.bd/pages/static-pages/695b9935c4774958d7b70508"
+    },
+
+
+    // ==============================
+    // CLASS 9
+    // ==============================
+
+    {
+        class: 9,
+        subject: "বাংলা ১ম পত্র",
+        title: "Class 9-10 বাংলা সাহিত্য",
+        pdf: "https://nctb.gov.bd/pages/static-pages/695b9935c4774958d7b70508"
+    }
+
+];
+
+
+// ========================================
+// OPEN ONLINE BOOK
+// ========================================
+
+function openBook(url) {
+
+    if (!url || url === "#") {
+
+        alert("📚 এই বইটির অনলাইন লিংক এখনো যোগ করা হয়নি।");
+
+        return;
+    }
+
+    window.open(url, "_blank");
 }
 
 
 // ========================================
-// নতুন বই যোগ করার উদাহরণ
-// ========================================
-
-// books.push({
-//     class: 5,
-//     subject: "বাংলা",
-//     title: "পঞ্চম শ্রেণির বাংলা বই",
-//     pdf: "এখানে-বৈধ-PDF-লিংক"
-// });
-    books.push({
-    class: 9,
-    subject: "বাংলা ১ম পত্র",
-    title: "Class 9-10 বাংলা সাহিত্য",
-    pdf: "books/class9/Secondary%20(BV)-2026_Class%209-10_Bangla%20Sahitto_compressed.pdf"
-});
-
-
-// ========================================
-// BOOK LIBRARY FUNCTION
-// ========================================
-
-function showBooks(classNumber = null, subject = null) {
-
-    let result = books;
-
-    if (classNumber !== null) {
-        result = result.filter(
-            book => book.class == classNumber
-        );
-    }
-
-    if (subject !== null) {
-        result = result.filter(
-            book => book.subject === subject
-        );
-    }
-
-    return result;
-}
-
-
-// ========================================
-// SEARCH BOOK
+// SEARCH BOOKS
 // ========================================
 
 function searchBooks(keyword) {
@@ -88,29 +96,37 @@ function searchBooks(keyword) {
     keyword = keyword.toLowerCase().trim();
 
     return books.filter(book =>
+
         book.title.toLowerCase().includes(keyword) ||
+
         book.subject.toLowerCase().includes(keyword) ||
+
         String(book.class).includes(keyword)
+
     );
 }
 
 
 // ========================================
-// BOOK OPEN
+// FILTER BOOKS
 // ========================================
 
-function openBook(pdf) {
+function filterBooks(classNumber, subject) {
 
-    if (!pdf || pdf === "#") {
+    return books.filter(book => {
 
-        alert(
-            "📚 এই বইটির PDF লিংক এখনো যোগ করা হয়নি।"
-        );
+        const classMatch =
+            !classNumber ||
+            String(book.class) === String(classNumber);
 
-        return;
-    }
+        const subjectMatch =
+            !subject ||
+            book.subject === subject;
 
-    window.open(pdf, "_blank");
+        return classMatch && subjectMatch;
+
+    });
+
 }
 
 
@@ -119,6 +135,6 @@ function openBook(pdf) {
 // ========================================
 
 console.log(
-    "📚 BT Study Hub Books:",
+    "📚 BT Study Hub Online Books:",
     books.length
 );
